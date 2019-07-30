@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>place-detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/places/tabs/discover"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ place.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <ion-button color="primary" margin (click)="onBookPlace()">Book</ion-button>
 </ion-content>
