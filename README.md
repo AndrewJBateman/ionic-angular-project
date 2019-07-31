@@ -15,27 +15,28 @@ App to create an Airbnb clone, following Udemy Tutorial: [Ionic 4 - Build iOS, A
 
 ## General info
 
-The Home page is a list of recipes. Click on one and it shows the detailed recipe page using the recipe id. Capacitor installed so app can be run on android.
+App to view and book places to stay. All places listed on the 'discover.page' andclicking on an item rnavigates to a place detail page using the place id in the browser.
+
+Burger side panel added with links to the discover places listings, your bookings and a logout button.
+
+Authorization added using login and logout buttons.
 
 ## Screenshots
 
-![Recipe List](./img/recipe-list.png)
-![Recipe Detail Page](./img/recipe-detail.png)
+![Discover home page](./img/.png)
 
 ## Technologies
 
-* [Ionic v5.10.0](https://ionicframework.com/)
+* [Ionic v5.0.0](https://ionicframework.com/)
+
+* [Angular v8.1.2](https://angular.io/)
 
 * [Ionic/angular v 4.7.1](https://ionicframework.com/)
-
-* [Ionic Capacitor framework v1.1.1](https://capacitor.ionicframework.com/)
-
-* Ionic DevApp, to allow app to run on an iOS or Android device.
 
 ## Setup
 
 * To start the server on _localhost://8100_ type: 'ionic serve'
-* The Ionic DevApp was installed on an Android device from the Google Play app store.
+* Build: tba
 
 ## Code Examples
 
@@ -43,13 +44,13 @@ The Home page is a list of recipes. Click on one and it shows the detailed recip
 
 ## Features
 
-* tba.
+* Authorization using can
 
 ## Status & To-do list
 
 * Status: Working basic app
 
-* To-do: change data in recipes.services.ts. Add functionality. run in Android simulator.
+* To-do: complete course
 
 ## Inspiration
 
