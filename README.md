@@ -15,11 +15,9 @@ App to create an Airbnb clone, following Udemy Tutorial: [Ionic 4 - Build iOS, A
 
 ## General info
 
-App to view and book places to stay. All places listed on the 'discover.page' and clicking on an item rnavigates to a place detail page using the place id in the browser.
+App to view and book places to stay. All places listed on the 'discover.page' and clicking on an item navigates to a place detail page using the place id in the browser.
 
 Burger side panel added with links to the discover places listings, your bookings and a logout button.
-
-Authorization added using login and logout buttons.
 
 ## Screenshots
 
@@ -43,11 +41,13 @@ Authorization added using login and logout buttons.
 
 ## Features
 
-* Authorization using can
+* Authorization module using Angular Routing with the Angular [canLoad auth guard interface](https://angular.io/api/router/CanLoad) to prevent access to pages if user is not logged in.
+
+* [Theme variables.scss](https://ionicframework.com/docs/theming/css-variables) file used to create a global color theme using the [Ionic color palette](https://ionicframework.com/docs/theming/color-generator) (note colors were in rgb not #hex as shown in the Ionic tutorial).
 
 ## Status & To-do list
 
-* Status: Working basic app
+* Status: Working basic app with a global theme applied.
 * To-do: complete course
 
 ## Inspiration
