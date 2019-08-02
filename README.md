@@ -45,6 +45,8 @@ Burger side panel added with links to the discover places listings, your booking
 
 * [Theme variables.scss](https://ionicframework.com/docs/theming/css-variables) file used to create a global color theme using the [Ionic color palette](https://ionicframework.com/docs/theming/color-generator) (note colors were in rgb not #hex as shown in the Ionic tutorial).
 
+* [Ionic datatime picker interface](https://ionicframework.com/docs/api/datetime) used to select booking dates. Alternative is a random dates option.
+
 ## Status & To-do list
 
 * Status: Working basic app with a global theme applied.
