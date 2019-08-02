@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 
 import { AuthService } from './auth.service';
-
 @Component({
 	selector: 'app-auth',
 	templateUrl: './auth.page.html',
@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 })
 export class AuthPage implements OnInit {
 	isLoading = false;
+	isLogin = true;
 
 	constructor(
 		private authService: AuthService,
@@ -34,8 +35,26 @@ export class AuthPage implements OnInit {
 					this.router.navigateByUrl('/places/tabs/discover');
 				}, 1500);
 			});
+	}
 
+	// toggle boolean value to switch between login and signup button/title in template
+	onSwitchAuthMode() {
+		this.isLogin = !this.isLogin;
+	}
 
+	onSubmit(form: NgForm) {
+		if (!form.valid) {
+			return;
+		}
+		const email = form.value.email;
+		const password = form.value.password;
+		console.log(email, password);
+
+		if (this.isLogin) {
+			// send request to login server
+		} else {
+			// send request to signup server
+		}
 	}
 
 }
