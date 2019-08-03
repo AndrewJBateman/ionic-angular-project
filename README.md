@@ -15,13 +15,15 @@ App to create an Airbnb-style app, following Udemy Tutorial: [Ionic 4 - Build iO
 
 ## General info
 
-App to view and book places to stay. All places listed on the 'discover.page' and clicking on an item navigates to a place detail page using the place id in the browser.
+* App to view and book places to stay. All places listed on the 'discover.page' and clicking on an item navigates to a place detail page using the place id in the browser.
 
-Places are displayed under 2 list option: 'ALL PLACES' and 'BOOKABLE PLACES'. The first place is displayed using an ion-card, the remaining places are displayed using a list with a thumbnail image.
+* Places are displayed under 2 list option: 'ALL PLACES' and 'BOOKABLE PLACES'. The first place is displayed using an ion-card, the remaining places are displayed using a list with a thumbnail image.
 
-Burger side panel added with links to the discover places listings, your bookings and a logout button.
+* Places can be booked, listed and cancelled.
 
-Bottom menu with 2 links to 'Discover' (default page upon loading) and 'Offers' that lists all the places available. At the moment these lists are the same.
+* Burger side panel added with links to the discover places listings, your bookings and a logout button.
+
+* Bottom menu with 2 links to 'Discover' (default page upon loading) and 'Offers' that lists all the places available. At the moment these lists are the same.
 
 ## Screenshots
 
