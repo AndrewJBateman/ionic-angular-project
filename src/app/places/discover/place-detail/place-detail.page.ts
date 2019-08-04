@@ -1,6 +1,6 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController, ModalController, ActionSheetController, LoadingController } from '@ionic/angular';
+import { NavController, ModalController, ActionSheetController, LoadingController, AlertController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 
 import { PlacesService } from '../../places.service';
@@ -18,6 +18,7 @@ import { Booking } from './../../../bookings/booking.model';
 export class PlaceDetailPage implements OnInit, OnDestroy {
 	place: Place;
 	isBookable = false;
+	isLoading = false;
 	private placeSub: Subscription;
 
 	constructor(
@@ -28,22 +29,39 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
 		private actionSheetCtrl: ActionSheetController,
 		private bookingService: BookingService,
 		private loadingCtrl: LoadingController,
-		private authService: AuthService
+		private authService: AuthService,
+		private alertCtrl: AlertController,
+		private router: Router
 	) {}
 
 	ngOnInit() {
-
 		// paramMap manages it's own subscription
 		this.route.paramMap.subscribe(paramMap => {
 			if (!paramMap.has('placeId')) {
 				this.navCtrl.navigateBack('/places/tabs/offers');
 				return;
 			}
+			this.isLoading = true;
 			this.placeSub = this.placesService
 				.getPlace(paramMap.get('placeId'))
 				.subscribe(place => {
 					this.place = place;
 					this.isBookable = place.userId !== this.authService.userId;
+					this.isLoading = false;
+				}, error => {
+					this.alertCtrl.create({
+						header: 'An error occured',
+						message: 'Could not load place.',
+						buttons: [
+							{
+								text: 'ok',
+								handler: () => {
+									this.router.navigate(['/places/tabs/discover']);
+								}
+							}
+						]
+					})
+					.then(alertEl => alertEl.present());
 				});
 		});
 	}
@@ -91,7 +109,8 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
 					.then(loadingEl => {
 						loadingEl.present();
 						const data = resultData.data.bookingData;
-						this.bookingService.addBooking(
+						this.bookingService
+						.addBooking(
 							this.place.id,
 							this.place.title,
 							this.place.imageUrl,

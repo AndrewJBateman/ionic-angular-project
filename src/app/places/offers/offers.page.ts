@@ -14,6 +14,7 @@ import { Place } from '../place.model';
 })
 export class OffersPage implements OnInit, OnDestroy {
 	offers: Place[];
+	isLoading = false;
 	private placesSub: Subscription;
 
 	constructor(private placesService: PlacesService, private router: Router) { }
@@ -22,6 +23,10 @@ export class OffersPage implements OnInit, OnDestroy {
 		this.placesSub = this.placesService.places.subscribe(places => {
 			this.offers = places;
 		});
+	}
+
+	ionViewWillEnter() {
+		this.placesService.fetchPlaces().subscribe();
 	}
 
 	onEdit(offerId: string, slidingItem: IonItemSliding) {

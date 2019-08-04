@@ -17,7 +17,7 @@ App to create an Airbnb-style app, following Udemy Tutorial: [Ionic 4 - Build iO
 
 * App to view and book places to stay. All places listed on the 'discover.page' and clicking on an item navigates to a place detail page using the place id in the browser.
 
-* Places are displayed under 2 list option: 'ALL PLACES' and 'BOOKABLE PLACES'. The first place is displayed using an ion-card, the remaining places are displayed using a list with a thumbnail image.
+* Places are displayed under 2 list option: 'ALL PLACES' and 'BOOKABLE PLACES'. The first place is displayed using an ion-card, the remaining places are displayed using a list with a thumbnail image. There is code to prevent the user from being able to book their own places, using a userId matching function.
 
 * Places can be booked, listed and cancelled.
 
@@ -52,6 +52,8 @@ App to create an Airbnb-style app, following Udemy Tutorial: [Ionic 4 - Build iO
 * [Theme variables.scss](https://ionicframework.com/docs/theming/css-variables) file used to create a global color theme using the [Ionic color palette](https://ionicframework.com/docs/theming/color-generator) (note colors were in rgb not #hex as shown in the Ionic tutorial).
 * [Ionic datetime picker interface](https://ionicframework.com/docs/api/datetime) used to select booking dates. Alternative is a random dates option.
 * [RxJS](https://angular.io/guide/rx-library) reactive programming used to manage state.
+* Error handling added
+* Firebase backend database used to store place and booking data.
 
 ## Status & To-do list
 
