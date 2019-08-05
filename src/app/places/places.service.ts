@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Place } from './place.model';
 import { BehaviorSubject, of } from 'rxjs';
-import { take, map, tap, delay, switchMap } from 'rxjs/operators';
+import { take, map, tap, switchMap } from 'rxjs/operators';
 
-import { AuthService } from './../auth/auth.service';
+import { AuthService } from '../auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 
 interface PlaceData {
@@ -95,9 +95,11 @@ export class PlacesService {
 	}
 
 	getPlace(id: string) {
-		return this.http.get<PlaceData>(
-			`https://ionic-angular-project-a9d42.firebaseio.com/offered-places/${id}.json`
-		).pipe(
+		return this.http
+			.get<PlaceData>(
+				`https://ionic-angular-project-a9d42.firebaseio.com/offered-places/${id}.json`
+			)
+			.pipe(
 			map(placeData => {
 				return new Place(
 					id,
@@ -135,10 +137,13 @@ export class PlacesService {
 
 		// post newPlace data to Firebase but replace id with null
 		return this.http
-			.post<{name: string}>('https://ionic-angular-project-a9d42.firebaseio.com/offered-places.json', {
+			.post<{name: string}>(
+				'https://ionic-angular-project-a9d42.firebaseio.com/offered-places.json',
+				{
 				...newPlace,
 				id: null
-			})
+				}
+			)
 			.pipe(
 				switchMap(resData => {
 					generatedId = resData.name;
@@ -164,18 +169,15 @@ export class PlacesService {
 	// emits a new list of offers that includes the added place
 	// logic ensures there is always a list of offers to work with.
 	updatePlace(placeId: string, title: string, description: string) {
-		let updatedPlaces: Place[];
+		let updatedPlaces: Place[]; // initialise updated places variable
 		return this.places.pipe(
-			take(1),
+			take(1), // take latest snapshot of list
 			switchMap(places => {
 				if (!places || places.length <= 0) {
 					return this.fetchPlaces(); // returns updated array of places
 				} else {
 					return of(places); // of takes array and wraps it into a new observable that will emit a value right away
 				}
-			}),
-			tap(() => {
-				this._places.next(updatedPlaces);
 			}),
 			switchMap(places => {
 				const updatedPlaceIndex = places.findIndex(pl => pl.id === placeId);
@@ -193,9 +195,12 @@ export class PlacesService {
 				);
 				return this.http.put(
 					`https://ionic-angular-project-a9d42.firebaseio.com/offered-places/${placeId}.json`,
-					{ ...updatedPlaces[updatedPlaceIndex], id: null }
+					{ ...updatedPlaces[updatedPlaceIndex], id: null } // Data to be replaced, override id
 				);
-			})
+			}),
+			tap(() => {
+				this._places.next(updatedPlaces); // emit new list of updated places
+			}),
 		);
 	}
 }

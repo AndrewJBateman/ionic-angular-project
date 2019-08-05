@@ -54,6 +54,8 @@ App to create an Airbnb-style app, following Udemy Tutorial: [Ionic 4 - Build iO
 * [RxJS](https://angular.io/guide/rx-library) reactive programming used to manage state.
 * Error handling added
 * Firebase backend database used to store place and booking data.
+* Bookings can be cancelled from booking.page.
+* Place details can be edited (as long as user id matches) using a neat button that slides from the right.
 
 ## Status & To-do list
 

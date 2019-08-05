@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { take, tap, delay, switchMap, map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
-import { AuthService } from 'src/app/auth/auth.service';
+import { AuthService } from '../auth/auth.service';
 import { Booking } from './booking.model';
 
 interface BookingData {
@@ -52,9 +52,10 @@ export class BookingService {
 			dateFrom,
 			dateTo
 		);
-		return this.http.post<{name: string}>(
-			'https://ionic-angular-project-a9d42.firebaseio.com/bookings.json',
-			{ ...newBooking, id: null }
+		return this.http
+			.post<{name: string}>(
+				'https://ionic-angular-project-a9d42.firebaseio.com/bookings.json',
+				{ ...newBooking, id: null }
 			)
 			.pipe(
 				switchMap(resData => {
@@ -70,19 +71,25 @@ export class BookingService {
 	}
 
 	cancelBooking(bookingId: string) {
-		return this.bookings.pipe(
-			take(1),
-			delay(1000),
-			tap(bookings => {
-				this._bookings.next(bookings.filter(b => b.id !== bookingId));
-			})
-		);
+		return this.http
+			.delete(
+			`https://ionic-angular-project-a9d42.firebaseio.com/bookings/${bookingId}.json`
+			)
+			.pipe(
+				switchMap(() => {
+					return this.bookings;
+				}),
+				take(1),
+				tap(bookings => {
+					this._bookings.next(bookings.filter(b => b.id !== bookingId));
+				})
+			);
 	}
 
 	fetchBookings() {
 		return this.http
 			.get<{ [key: string]: BookingData }>(
-				`https://ionic-angular-project-a9d42.firebaseio.com/bookings.json?orderBy="userId&equalTo="${
+				`https://ionic-angular-project-a9d42.firebaseio.com/bookings.json?orderBy="userId"&equalTo="${
 					this.authService.userId
 				}"`
 			)
@@ -103,7 +110,6 @@ export class BookingService {
 									bookingData[key].guestNumber,
 									new Date(bookingData[key].bookedFrom),
 									new Date(bookingData[key].bookedTo)
-
 								)
 							);
 						}

@@ -16,7 +16,10 @@ export class BookingsPage implements OnInit, OnDestroy {
 	isLoading = false;
 	private bookingSub: Subscription;
 
-	constructor(private bookingService: BookingService, private loadingController: LoadingController) { }
+	constructor(
+		private bookingService: BookingService,
+		private loadingCtrl: LoadingController
+	) { }
 
 	ngOnInit() {
 		this.bookingSub = this.bookingService.bookings.subscribe(bookings => {
@@ -33,7 +36,7 @@ export class BookingsPage implements OnInit, OnDestroy {
 
 	onCancelBooking(bookingId: string, slidingEl: IonItemSliding) {
 		slidingEl.close();
-		this.loadingController.create({message: 'Cancelling...'}).then(loadingEl => {
+		this.loadingCtrl.create({message: 'Cancelling...'}).then(loadingEl => {
 			loadingEl.present();
 			this.bookingService.cancelBooking(bookingId).subscribe(() => {
 				loadingEl.dismiss();
