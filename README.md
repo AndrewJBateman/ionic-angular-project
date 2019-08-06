@@ -19,9 +19,9 @@ Code taken from course.
 * App to view and book places to stay. All places listed on the 'discover.page' and clicking on an item navigates to a place detail page using the place id in the browser.
 * Places are displayed under 2 list option: 'ALL PLACES' and 'BOOKABLE PLACES'. The first place is displayed using an ion-card, the remaining places are displayed using a list with a thumbnail image. There is code to prevent the user from being able to book their own places, using a userId matching function.
 * Places can be booked, listed and cancelled.
-* New places can be added.
+* New places can be added. The location of the new place is chosen using google maps and is stored in the Places array to be displayed in the template using data-binding.
 * Burger side panel added with links to the discover places listings, your bookings and a logout button.
-* Bottom menu with 2 links to 'Discover' (default page upon loading) and 'Offers' that lists all the places available. At the moment these lists are the same.
+* Bottom menu with 2 links to 'Discover' (default page upon loading) and 'Offers' that lists all the places available.
 
 ## Screenshots
 
@@ -35,6 +35,7 @@ Code taken from course.
 * [Ionic/angular v 4.7.1](https://ionicframework.com/)
 * [RxJS](https://angular.io/guide/rx-library)
 * [Google Firebase](https://firebase.google.com)
+* [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial)
 
 ## Setup
 
@@ -86,7 +87,7 @@ private getGoogleMaps(): Promise<any> {
 * [Firebase backend database](https://firebase.google.com) used to store place and booking data.
 * Bookings can be cancelled from booking.page.
 * Place details can be edited (as long as user id matches) using a neat button that slides from the right.
-* [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial) map-modal added to new-offer page. Clicking on 'SELECT LOCATION' will open Google Maps at a fixed location.
+* [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial) map-modal added to new-offer page. Clicking on 'SELECT LOCATION' will open Google Maps at a fixed location. Address of place extracted from Google Maps data and stored in Places database.
 
 ## Status & To-do list
 

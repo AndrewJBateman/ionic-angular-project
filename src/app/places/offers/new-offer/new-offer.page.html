@@ -75,7 +75,7 @@
 
       <ion-row>
         <ion-col size-sm="3" offset-sm="3">
-          <app-location-picker></app-location-picker>
+          <app-location-picker (locationPick)="onLocationPicked($event)"></app-location-picker>
         </ion-col>
       </ion-row>
 
