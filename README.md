@@ -19,7 +19,7 @@ Code taken from course.
 * App to view and book places to stay. All places listed on the 'discover.page' and clicking on an item navigates to a place detail page using the place id in the browser.
 * Places are displayed under 2 list option: 'ALL PLACES' and 'BOOKABLE PLACES'. The first place is displayed using an ion-card, the remaining places are displayed using a list with a thumbnail image. There is code to prevent the user from being able to book their own places, using a userId matching function.
 * Places can be booked, listed and cancelled.
-* New places can be added. The location of the new place is chosen using google maps and is stored in the Places array to be displayed in the template using data-binding.
+* New places can be added. The location of the new place is chosen using google maps and is stored in the Places array to be displayed in the template using data-binding. A photo can be taken to add to the new Place description. If there is no camera then there is a file upload button to save a jpeg image.
 * Burger side panel added with links to the discover places listings, your bookings and a logout button.
 * Bottom menu with 2 links to 'Discover' (default page upon loading) and 'Offers' that lists all the places available.
 
@@ -33,14 +33,15 @@ Code taken from course.
 * [Ionic v5.0.0](https://ionicframework.com/)
 * [Angular v8.1.2](https://angular.io/)
 * [Ionic/angular v 4.7.1](https://ionicframework.com/)
-* [RxJS](https://angular.io/guide/rx-library)
+* [RxJS v6.5.1](https://angular.io/guide/rx-library)
 * [Google Firebase](https://firebase.google.com)
 * [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial)
+* [Capacitor v1.1.1](https://capacitor.ionicframework.com/)
 
 ## Setup
 
-* To start the server on _localhost://8100_ type: 'ionic serve'
-* Build: tba
+* To start the server on _localhost://8100_ type: `ionic serve`
+* Build for Android app: `ionic capacitor run android`
 
 ## Code Examples (taken from Udemy course with my comments added)
 
@@ -88,6 +89,8 @@ private getGoogleMaps(): Promise<any> {
 * Bookings can be cancelled from booking.page.
 * Place details can be edited (as long as user id matches) using a neat button that slides from the right.
 * [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial) map-modal added to new-offer page. Clicking on 'SELECT LOCATION' will open Google Maps at a fixed location. Address of place extracted from Google Maps data and stored in Places database.
+* [Capacitor Geolocation API](https://capacitor.ionicframework.com/docs/apis/geolocation) used to provide current location.
+* [Capacitor Camera API](https://capacitor.ionicframework.com/docs/apis/camera) used to provide camera functionality.
 
 ## Status & To-do list
 
