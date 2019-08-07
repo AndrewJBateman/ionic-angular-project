@@ -41,6 +41,7 @@ Code taken from course.
 ## Setup
 
 * To start the server on _localhost://8100_ type: `ionic serve`
+* To generate normal www build file: `ionic build`
 * Build for Android app: `ionic capacitor run android`
 
 ## Code Examples (taken from Udemy course with my comments added)
