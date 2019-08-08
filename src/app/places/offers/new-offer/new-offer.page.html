@@ -58,15 +58,15 @@
         <ion-col size-sm="3" offset-sm="3">
           <ion-item>
             <ion-label position="floating">Available from</ion-label>
-            <ion-datetime min="2019-01-01" max="2022-12-31" formControlName="dateFrom"></ion-datetime>
+            <ion-datetime min="2019-08-08" max="2025-12-31" formControlName="dateFrom"></ion-datetime>
           </ion-item>
         </ion-col>
         <ion-col size-sm="3">
           <ion-item>
             <ion-label position="floating">Available to</ion-label>
             <ion-datetime
-              min="2019-01-02"
-              max="2022-12-31"
+              min="2019-08-09"
+              max="2025-12-31"
               formControlName="dateTo">
             </ion-datetime>
           </ion-item>
@@ -74,14 +74,20 @@
       </ion-row>
 
       <ion-row>
-        <ion-col size-sm="3" offset-sm="3">
-          <app-location-picker (locationPick)="onLocationPicked($event)"></app-location-picker>
+        <ion-col size-sm="6" offset-sm="3">
+          <app-location-picker
+            [showPreview]="form.get('location').value"
+            (locationPick)="onLocationPicked($event)">
+          </app-location-picker>
         </ion-col>
       </ion-row>
 
       <ion-row>
-        <ion-col size-sm="3" offset-sm="3">
-          <app-image-picker (imagePick)="onImagePicked($event)"></app-image-picker>
+        <ion-col size-sm="6" offset-sm="3">
+          <app-image-picker
+          [showPreview]="form.get('image').value"
+          (imagePick)="onImagePicked($event)">
+        </app-image-picker>
         </ion-col>
       </ion-row>
 

@@ -14,7 +14,6 @@ const routes: Routes = [
 		component: NewOfferPage
 	}
 ];
-
 @NgModule({
 	imports: [
 		CommonModule,

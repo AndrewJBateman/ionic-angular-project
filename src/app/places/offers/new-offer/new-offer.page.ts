@@ -2,6 +2,7 @@ import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { switchMap } from 'rxjs/operators';
 
 import { PlaceLocation } from './../../location.model';
 import { PlacesService } from '../../places.service';
@@ -35,7 +36,11 @@ function base64toBlob(base64Data, contentType) {
 export class NewOfferPage implements OnInit {
 	form: FormGroup;
 
-	constructor(private placesService: PlacesService, private router: Router, private loadingCtrl: LoadingController) { }
+	constructor(
+		private placesService: PlacesService,
+		private router: Router,
+		private loadingCtrl: LoadingController
+	) { }
 
 	ngOnInit() {
 		this.form = new FormGroup({
@@ -98,13 +103,19 @@ export class NewOfferPage implements OnInit {
 			.then(loadingEl => {
 				loadingEl.present();
 				this.placesService
-					.addPlace(
-						this.form.value.title,
-						this.form.value.description,
-						+this.form.value.price,
-						new Date(this.form.value.dateFrom),
-						new Date(this.form.value.dateTo),
-						this.form.value.location
+					.uploadImage(this.form.get('image').value)
+					.pipe(
+						switchMap(uploadRes => {
+							return this.placesService.addPlace(
+								this.form.value.title,
+								this.form.value.description,
+								+this.form.value.price,
+								new Date(this.form.value.dateFrom),
+								new Date(this.form.value.dateTo),
+								this.form.value.location,
+								uploadRes.imageUrl
+							);
+						})
 					)
 					.subscribe(() => {
 						loadingEl.dismiss();
@@ -112,6 +123,5 @@ export class NewOfferPage implements OnInit {
 						this.router.navigate(['/places/tabs/offers']);
 					});
 			});
-
 	}
 }

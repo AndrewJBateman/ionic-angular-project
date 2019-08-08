@@ -119,13 +119,24 @@ export class PlacesService {
 		);
 	}
 
+	uploadImage(image: File) {
+		const uploadData = new FormData();
+		uploadData.append('image', image);
+
+		return this.http.post<{imageUrl: string, imagePath: string}>(
+			'https://us-central1-ionic-angular-project-a9d42.cloudfunctions.net/storeImage',
+			uploadData
+		);
+	}
+
 	addPlace(
 		title: string,
 		description: string,
 		price: number,
 		dateFrom: Date,
 		dateTo: Date,
-		location: PlaceLocation
+		location: PlaceLocation,
+		imageUrl: string
 	) {
 		let generatedId: string;
 		const newPlace = new Place
@@ -133,7 +144,7 @@ export class PlacesService {
 				Math.random().toString(),
 				title,
 				description,
-				'https://www.ecuavisa.com/cdn-cgi/image/width=1600,quality=75/sites/default/files/fotos/2016/03/15/casa_tyson.jpg',
+				imageUrl,
 				price,
 				dateFrom,
 				dateTo,

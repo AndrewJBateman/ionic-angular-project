@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild, Input } from '@angular/core';
 import { Plugins, Capacitor, CameraSource, CameraResultType } from '@capacitor/core';
 import { Platform } from '@ionic/angular';
 
@@ -10,6 +10,7 @@ import { Platform } from '@ionic/angular';
 export class ImagePickerComponent implements OnInit {
 	@ViewChild('filePicker', { static: false }) filePickerRef: ElementRef<HTMLInputElement>;
 	@Output() imagePick = new EventEmitter<string | File>();
+	@Input() showPreview = false;
 	selectedImage: string;
 	usePicker = false;
 
@@ -35,25 +36,25 @@ export class ImagePickerComponent implements OnInit {
 			return;
 		}
 		Plugins.Camera
-		.getPhoto({
-			quality: 50,
-			source: CameraSource.Prompt,
-			correctOrientation: true,
-			height: 320,
-			width: 200,
-			resultType: CameraResultType.Base64
-		})
-		.then(image => {
-			this.selectedImage = image.base64String;
-			this.imagePick.emit(image.base64String);
-		})
-		.catch(error => {
-			console.log(error);
-			if (this.usePicker) {
-				this.filePickerRef.nativeElement.click();
-			}
-			return false;
-		});
+			.getPhoto({
+				quality: 50,
+				source: CameraSource.Prompt,
+				correctOrientation: true,
+				// height: 320,
+				width: 200,
+				resultType: CameraResultType.Base64
+			})
+			.then(image => {
+				this.selectedImage = image.base64String;
+				this.imagePick.emit(image.base64String);
+			})
+			.catch(error => {
+				console.log(error);
+				if (this.usePicker) {
+					this.filePickerRef.nativeElement.click();
+				}
+				return false;
+			});
 	}
 
 	onFileChosen(event: Event) {
@@ -70,7 +71,4 @@ export class ImagePickerComponent implements OnInit {
 		fr.readAsDataURL(pickedFile);
 	}
 
-
-
 }
-

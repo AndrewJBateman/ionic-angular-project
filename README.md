@@ -86,7 +86,7 @@ private getGoogleMaps(): Promise<any> {
 * [Ionic datetime picker interface](https://ionicframework.com/docs/api/datetime) used to select booking dates. Alternative is a random dates option.
 * [RxJS](https://angular.io/guide/rx-library) reactive programming used to manage state.
 * Error handling added
-* [Firebase backend database](https://firebase.google.com) used to store place and booking data.
+* [Firebase backend database](https://firebase.google.com) used to store place and booking data. Images are stored in the same database.
 * Bookings can be cancelled from booking.page.
 * Place details can be edited (as long as user id matches) using a neat button that slides from the right.
 * [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial) map-modal added to new-offer page. Clicking on 'SELECT LOCATION' will open Google Maps at a fixed location. Address of place extracted from Google Maps data and stored in Places database.
