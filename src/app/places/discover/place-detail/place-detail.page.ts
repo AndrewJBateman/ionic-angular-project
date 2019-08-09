@@ -2,6 +2,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController, ModalController, ActionSheetController, LoadingController, AlertController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { switchMap, take } from 'rxjs/operators';
+
 
 import { PlacesService } from '../../places.service';
 import { Place } from '../../place.model';
@@ -42,13 +44,25 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
 				return;
 			}
 			this.isLoading = true;
-			this.placeSub = this.placesService
-				.getPlace(paramMap.get('placeId'))
+			let fetchedUserId: string;
+			this.authService.userId
+				.pipe(
+					take(1),
+					switchMap(
+					userId => {
+						if (!userId) {
+							throw new Error('found no user');
+						}
+						fetchedUserId = userId;
+						return this.placesService.getPlace(paramMap.get('placeId'));
+					})
+				)
 				.subscribe(place => {
 					this.place = place;
-					this.isBookable = place.userId !== this.authService.userId;
+					this.isBookable = place.userId !== fetchedUserId;
 					this.isLoading = false;
-				}, error => {
+				},
+				error => {
 					this.alertCtrl.create({
 						header: 'An error occured',
 						message: 'Could not load place.',
@@ -87,7 +101,8 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
 					role: 'cancel'
 				}
 			]
-		}).then(actionSheetEl => {
+		})
+		.then(actionSheetEl => {
 			actionSheetEl.present();
 		});
 	}
@@ -97,7 +112,8 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
 		this.modalCtrl
 		.create({
 			component: CreateBookingComponent,
-			componentProps: { selectedPlace: this.place, selectedMode: mode }})
+			componentProps: { selectedPlace: this.place, selectedMode: mode }
+		})
 		.then(modalEl => {
 			modalEl.present();
 			return modalEl.onDidDismiss();

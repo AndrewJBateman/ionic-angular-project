@@ -17,6 +17,14 @@ exports.storeImage = functions.https.onRequest((req, res) => {
     if (req.method !== 'POST') {
       return res.status(500).json({ message: 'Not allowed.' });
     }
+
+    if (!req.headers.authorizaton || !req.headers.authorizaton.startsWith('Bear ')) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    let idToken;
+    idToken = req.headers.authorization.split('Bearer ')[1];
+
     const busboy = new Busboy({ headers: req.headers });
     let uploadData;
     let oldImagePath;
@@ -38,20 +46,24 @@ exports.storeImage = functions.https.onRequest((req, res) => {
         imagePath = oldImagePath;
       }
 
-      console.log(uploadData.type);
-      return storage
-        .bucket('ionic-angular-project-a9d42.appspot.com')
-        .upload(uploadData.filePath, {
-          uploadType: 'media',
-          destination: imagePath,
-          metadata: {
-            metadata: {
-              contentType: uploadData.type,
-              firebaseStorageDownloadTokens: id
-            }
-          }
+      return fbAdmin
+        .auth()
+        .verifyIdToken(idToken)
+        .then(decodedToken => {
+          console.log(uploadData.type);
+          return storage
+            .bucket('ionic-angular-project-a9d42.appspot.com')
+            .upload(uploadData.filePath, {
+              uploadType: 'media',
+              destination: imagePath,
+              metadata: {
+                metadata: {
+                  contentType: uploadData.type,
+                  firebaseStorageDownloadTokens: id
+                }
+              }
+            })
         })
-
         .then(() => {
           return res.status(201).json({
             imageUrl:

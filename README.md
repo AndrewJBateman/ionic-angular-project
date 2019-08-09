@@ -92,6 +92,9 @@ private getGoogleMaps(): Promise<any> {
 * [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial) map-modal added to new-offer page. Clicking on 'SELECT LOCATION' will open Google Maps at a fixed location. Address of place extracted from Google Maps data and stored in Places database.
 * [Capacitor Geolocation API](https://capacitor.ionicframework.com/docs/apis/geolocation) used to provide current location.
 * [Capacitor Camera API](https://capacitor.ionicframework.com/docs/apis/camera) used to provide camera functionality.
+* [Firebase Auth API](https://firebase.google.com/docs/reference/rest/auth) used to control access to app.
+* [Cordova Local Storage](https://cordova.apache.org/docs/en/latest/cordova/storage/storage.html#localstorage) to save user user authentication token so a refresh etc. does not lose a user's settings.
+* Auth tokens on the backend.
 
 ## Status & To-do list
 
