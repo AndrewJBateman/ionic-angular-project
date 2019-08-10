@@ -23,6 +23,16 @@ Code taken from course.
 * Burger side panel added with links to the discover places listings, your bookings and a logout button.
 * Bottom menu with 2 links to 'Discover' (default page upon loading) and 'Offers' that lists all the places available.
 
+## [RxJS operators](http://reactivex.io/documentation/observable.html)
+
+**switchMap** for http requests that emit just one value and for long-lived streams for Firebase real-time database and authentication. They do not need to be unsubscribed as they complete after emission. **switch:** because the result observable has switched from emitting the values of the first inner observable, to emitting the values of the newly created inner (derived) observable. The previous inner observable is cancelled and the new observable is subscribed. **map:** because what is being mapped is the emitted source value, that is getting mapped to an observable using the mapping function passed to switchMap. (The alternative operator is mergeMap).
+
+**of** used with a single value for an 'emit once and complete' stream.
+
+**take** tba
+
+**tap** tba
+
 ## Screenshots
 
 ![page](./img/discover-places-page.png)
