@@ -2,11 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { SegmentChangeEventDetail } from '@ionic/core';
 import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 import { PlacesService } from '../places.service';
 import { Place } from '../place.model';
 import { AuthService } from 'src/app/auth/auth.service';
-import { take } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-discover',

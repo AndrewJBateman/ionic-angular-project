@@ -19,7 +19,7 @@ Code taken from course.
 * App to view and book places to stay. All places listed on the 'discover.page' and clicking on an item navigates to a place detail page using the place id in the browser.
 * Places are displayed under 2 list option: 'ALL PLACES' and 'BOOKABLE PLACES'. The first place is displayed using an ion-card, the remaining places are displayed using a list with a thumbnail image. There is code to prevent the user from being able to book their own places, using a userId matching function.
 * Places can be booked, listed and cancelled.
-* New places can be added. The location of the new place is chosen using google maps and is stored in the Places array to be displayed in the template using data-binding. A photo can be taken to add to the new Place description. If there is no camera then there is a file upload button to save a jpeg image.
+* New places can be added. The location of the new place is chosen using google maps and is displayed in the template using data-binding. A photo can be taken to add to the new Place description. If there is no camera then there is a file upload button to save a jpeg image.
 * Burger side panel added with links to the discover places listings, your bookings and a logout button.
 * Bottom menu with 2 links to 'Discover' (default page upon loading) and 'Offers' that lists all the places available.
 
@@ -104,11 +104,12 @@ private getGoogleMaps(): Promise<any> {
 * [Capacitor Camera API](https://capacitor.ionicframework.com/docs/apis/camera) used to provide camera functionality.
 * [Firebase Auth API](https://firebase.google.com/docs/reference/rest/auth) used to control access to app.
 * [Cordova Local Storage](https://cordova.apache.org/docs/en/latest/cordova/storage/storage.html#localstorage) to save user user authentication token so a refresh etc. does not lose a user's settings.
+* [Google Cloud Storage](https://www.npmjs.com/package/@google-cloud/storage) used for storage of image data.
 * Auth tokens on the backend.
 
 ## Status & To-do list
 
-* Status: Working but missing functionality.
+* Status: issue with auth token means user is logged out immediately. New database used which is currently empty.
 * To-do: complete course
 
 ## Inspiration

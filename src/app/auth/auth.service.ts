@@ -8,11 +8,12 @@ import { environment } from '../../environments/environment';
 import { User } from './user.model';
 
 export interface AuthResponseData {
+	kind: string;
 	idToken: string;
 	email: string;
 	refreshToken: string;
-	expiresIn: string;
 	localId: string;
+	expiresIn: string;
 	registered?: boolean;
 }
 
@@ -157,8 +158,7 @@ export class AuthService implements OnDestroy {
 				userData.email,
 				userData.idToken,
 				expirationTime
-			)
-		;
+		);
 		this._user.next(user);
 		this.autoLogout(user.tokenDuration);
 		this.storeAuthData(
@@ -181,6 +181,7 @@ export class AuthService implements OnDestroy {
 			tokenExpirationDate,
 			email
 		});
+		console.log('auth data: ', data);
 		Plugins.Storage.set({ key: 'authData', value: data });
 	}
 }

@@ -9,7 +9,7 @@ const uuid = require('uuid/v4');
 const { Storage } = require('@google-cloud/storage');
 
 const storage = new Storage({
-  projectId: 'ionic-angular-project-a9d42'
+  projectId: 'ionic-angular-pr-1565107344855'
 });
 
 exports.storeImage = functions.https.onRequest((req, res) => {
@@ -17,14 +17,6 @@ exports.storeImage = functions.https.onRequest((req, res) => {
     if (req.method !== 'POST') {
       return res.status(500).json({ message: 'Not allowed.' });
     }
-
-    if (!req.headers.authorizaton || !req.headers.authorizaton.startsWith('Bear ')) {
-      return res.status(401).json({ error: 'Unauthorized' });
-    }
-
-    let idToken;
-    idToken = req.headers.authorization.split('Bearer ')[1];
-
     const busboy = new Busboy({ headers: req.headers });
     let uploadData;
     let oldImagePath;
@@ -46,29 +38,25 @@ exports.storeImage = functions.https.onRequest((req, res) => {
         imagePath = oldImagePath;
       }
 
-      return fbAdmin
-        .auth()
-        .verifyIdToken(idToken)
-        .then(decodedToken => {
-          console.log(uploadData.type);
-          return storage
-            .bucket('ionic-angular-project-a9d42.appspot.com')
-            .upload(uploadData.filePath, {
-              uploadType: 'media',
-              destination: imagePath,
-              metadata: {
-                metadata: {
-                  contentType: uploadData.type,
-                  firebaseStorageDownloadTokens: id
-                }
-              }
-            })
+      console.log(uploadData.type);
+      return storage
+        .bucket('ionic-angular-pr-1565107344855.appspot.com')
+        .upload(uploadData.filePath, {
+          uploadType: 'media',
+          destination: imagePath,
+          metadata: {
+            metadata: {
+              contentType: uploadData.type,
+              firebaseStorageDownloadTokens: id
+            }
+          }
         })
+
         .then(() => {
           return res.status(201).json({
             imageUrl:
               'https://firebasestorage.googleapis.com/v0/b/' +
-              storage.bucket('ionic-angular-project-a9d42.appspot.com').name +
+              storage.bucket('ionic-angular-pr-1565107344855.appspot.com').name +
               '/o/' +
               encodeURIComponent(imagePath) +
               '?alt=media&token=' +
