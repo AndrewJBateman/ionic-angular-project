@@ -29,9 +29,19 @@ Code taken from course.
 
 **of** used with a single value for an 'emit once and complete' stream.
 
-**take** tba
+**take** emits only the first n values from an observable (e.g. take(1) emits only the first 2 values )
 
-**tap** tba
+**tap** used to perform side effects. Every data value is received from the source, an action is taken on a part of the data then the data passeed on unchanged.
+
+**map** passes each source value through a transformation function then outputs the results, e.g map(x => 10*x)
+
+## Observables
+
+An [observable](https://rxjs-dev.firebaseapp.com/guide/observable) is created using 'new Observable'. It is subscribed to using an Observer and executed to deliver next / error / complete notices to the Observer, before the execution is disposed of. Sbscribers should be wrapped in try/catch blocks.
+
+## Array Operators
+
+* [Array.push()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) adds one or more elements to the end of an array and returns the new aray length.
 
 ## Screenshots
 

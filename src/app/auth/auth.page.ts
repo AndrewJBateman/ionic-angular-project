@@ -40,7 +40,6 @@ export class AuthPage implements OnInit {
 				}
 				authObs.subscribe(
 					resData => {
-						console.log(resData);
 						this.isLoading = false;
 						loadingEl.dismiss();
 						this.router.navigateByUrl('/places/tabs/discover');

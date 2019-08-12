@@ -27,6 +27,7 @@ export class BookingsPage implements OnInit, OnDestroy {
 		});
 	}
 
+	// lifecycle event fired when entering a page
 	ionViewWillEnter() {
 		this.isLoading = true;
 		this.bookingService.fetchBookings().subscribe(() => {

@@ -21,7 +21,7 @@ export interface AuthResponseData {
 	providedIn: 'root'
 })
 export class AuthService implements OnDestroy {
-	// tslint:disable-next-line: variable-name
+
 	private _user = new BehaviorSubject<User>(null);
 	private activeLogoutTimer: any;
 
@@ -181,7 +181,6 @@ export class AuthService implements OnDestroy {
 			tokenExpirationDate,
 			email
 		});
-		console.log('auth data: ', data);
 		Plugins.Storage.set({ key: 'authData', value: data });
 	}
 }

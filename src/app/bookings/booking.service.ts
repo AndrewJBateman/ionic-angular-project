@@ -20,7 +20,6 @@ interface BookingData {
 
 @Injectable({ providedIn: 'root' })
 export class BookingService {
-	// tslint:disable-next-line: variable-name
 	private _bookings = new BehaviorSubject<Booking[]>([]);
 
 	get bookings() {

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "ionic-angular-pr-1565107344855"
+    "default": "ionic-angular-pr-1565107344855",
+    "testing": "ionic-angular-pr-1565107344855"
   }
 }

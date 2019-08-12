@@ -55,7 +55,6 @@ interface PlaceData {
 	providedIn: 'root'
 })
 export class PlacesService {
-	// tslint:disable-next-line: variable-name
 	private _places = new BehaviorSubject<Place[]>([]);
 
 	get places() {
@@ -101,7 +100,7 @@ export class PlacesService {
 
 	getPlace(id: string) {
 		return this.authService.token.pipe(
-			take(1),
+			take(1), // only need one token
 			switchMap(token => {
 				return this.http.get<PlaceData>(
 					`https://ionic-angular-pr-1565107344855.firebaseio.com/offered-places/${id}.json?auth=${token}`
@@ -131,7 +130,8 @@ export class PlacesService {
 			take(1),
 			switchMap(token => {
 				return this.http.post<{ imageUrl: string, imagePath: string }>(
-					'https://us-central1-ionic-angular-pr-1565107344855.cloudfunctions.net/storeImage',
+					// 'https://eur3-ionic-angular-pr-1565107344855.cloudfunctions.net/storeImage',
+					'gs://ionic-angular-pr-1565107344855.appspot.com/',
 					uploadData, {headers: { Authorization: 'Bearer ' + token } }
 				);
 			})
