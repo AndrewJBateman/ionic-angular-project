@@ -66,7 +66,7 @@ export class BookingService {
 				);
 				return this.http
 			.post<{ name: string }>(
-				`https://ionic-angular-pr-1565107344855.firebaseio.com/bookings.json?auth=${token}`,
+				`https://ionic-maps-api-1565705298126.firebaseio.com/bookings.json?auth=${token}`,
 				{ ...newBooking, id: null }
 			);
 			}),
@@ -88,7 +88,7 @@ export class BookingService {
 			switchMap(token => {
 				return this.http
 					.delete(
-						`https://ionic-angular-pr-1565107344855.firebaseio.com/bookings/${bookingId}.json?auth=${token}`
+						`https://ionic-maps-api-1565705298126.firebaseio.com/bookings/${bookingId}.json?auth=${token}`
 					);
 			}),
 			switchMap(() => {
@@ -115,7 +115,7 @@ export class BookingService {
 			take(1),
 			switchMap(token => {
 				return this.http.get<{ [key: string]: BookingData }>(
-					`https://ionic-angular-pr-1565107344855.firebaseio.com/bookings.json?orderBy="userId"&equalTo="${fetchedUserId}"&auth=${token}`
+					`https://ionic-maps-api-1565705298126.firebaseio.com/bookings.json?orderBy="userId"&equalTo="${fetchedUserId}"&auth=${token}`
 				);
 			}),
 

@@ -8,7 +8,7 @@ import { PlaceLocation } from './../../location.model';
 import { PlacesService } from '../../places.service';
 
 // function to convert a base64 string to a blob (file)
-function base64toBlob(base64Data, contentType) {
+function base64toBlob(base64Data, contentType: any) {
 	contentType = contentType || '';
 	const sliceSize = 1024;
 	const byteCharacters = window.atob(base64Data);

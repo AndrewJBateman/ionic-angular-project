@@ -119,8 +119,8 @@ private getGoogleMaps(): Promise<any> {
 
 ## Status & To-do list
 
-* Status: issue with auth token means user is logged out immediately. New database used which is currently empty.
-* To-do: complete course
+* Status: working 95%. Bookings can be made and new places added to offers page. If a different user is logged in they cannot book their own places (the booking button does not show) - which is correct.
+* To-do: correct issues: Camera image does not display. Bookable place list is the same as the 'All Places' list - bookable places should not include the logged in users' places. 'My Offers' includes everyones places. 'Your Bookings' does not work - check path.
 
 ## Inspiration
 

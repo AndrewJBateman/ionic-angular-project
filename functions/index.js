@@ -9,7 +9,7 @@ const uuid = require('uuid/v4');
 const { Storage } = require('@google-cloud/storage');
 
 const storage = new Storage({
-  projectId: 'ionic-angular-pr-1565107344855'
+  projectId: 'ionic-maps-api-1565705298126'
 });
 
 exports.storeImage = functions.https.onRequest((req, res) => {
@@ -40,7 +40,7 @@ exports.storeImage = functions.https.onRequest((req, res) => {
 
       console.log(uploadData.type);
       return storage
-        .bucket('ionic-angular-pr-1565107344855.appspot.com')
+        .bucket('ionic-maps-api-1565705298126.appspot.com')
         .upload(uploadData.filePath, {
           uploadType: 'media',
           destination: imagePath,
@@ -56,7 +56,7 @@ exports.storeImage = functions.https.onRequest((req, res) => {
           return res.status(201).json({
             imageUrl:
               'https://firebasestorage.googleapis.com/v0/b/' +
-              storage.bucket('ionic-angular-pr-1565107344855.appspot.com').name +
+              storage.bucket('ionic-maps-api-1565705298126.appspot.com').name +
               '/o/' +
               encodeURIComponent(imagePath) +
               '?alt=media&token=' +

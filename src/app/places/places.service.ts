@@ -68,7 +68,7 @@ export class PlacesService {
 			take(1),
 			switchMap(token => {
 				return this.http.get<{ [key: string]: PlaceData }>(
-				`https://ionic-angular-pr-1565107344855.firebaseio.com/offered-places.json?auth=${token}`
+				`https://ionic-maps-api-1565705298126.firebaseio.com/offered-places.json?auth=${token}`
 				);
 			}),
 			map(resData => {
@@ -103,7 +103,7 @@ export class PlacesService {
 			take(1), // only need one token
 			switchMap(token => {
 				return this.http.get<PlaceData>(
-					`https://ionic-angular-pr-1565107344855.firebaseio.com/offered-places/${id}.json?auth=${token}`
+					`https://ionic-maps-api-1565705298126.firebaseio.com/offered-places/${id}.json?auth=${token}`
 				);
 			}),
 			map(placeData => {
@@ -130,8 +130,7 @@ export class PlacesService {
 			take(1),
 			switchMap(token => {
 				return this.http.post<{ imageUrl: string, imagePath: string }>(
-					// 'https://eur3-ionic-angular-pr-1565107344855.cloudfunctions.net/storeImage',
-					'gs://ionic-angular-pr-1565107344855.appspot.com/',
+					'https://us-central1-ionic-maps-api-1565705298126.cloudfunctions.net/storeImage',
 					uploadData, {headers: { Authorization: 'Bearer ' + token } }
 				);
 			})
@@ -176,7 +175,7 @@ export class PlacesService {
 				// post newPlace data to Firebase but replace id with null
 				return this.http
 					.post<{name: string}>(
-						`https://ionic-angular-pr-1565107344855.firebaseio.com/offered-places.json?auth=${token}`,
+						`https://ionic-maps-api-1565705298126.firebaseio.com/offered-places.json?auth=${token}`,
 						{
 							...newPlace,
 							id: null
@@ -239,7 +238,7 @@ export class PlacesService {
 					oldPlace.location
 				);
 				return this.http.put(
-					`https://ionic-angular-pr-1565107344855.firebaseio.com/offered-places/${placeId}.json?auth=${fetchedToken}`,
+					`https://ionic-maps-api-1565705298126.firebaseio.com/offered-places/${placeId}.json?auth=${fetchedToken}`,
 					{ ...updatedPlaces[updatedPlaceIndex], id: null } // Data to be replaced, override id
 				);
 			}),
