@@ -129,7 +129,7 @@ export class PlacesService {
 		return this.authService.token.pipe(
 			take(1),
 			switchMap(token => {
-				return this.http.post<{ imageUrl: string, imagePath: string }>(
+				return this.http.post<{ imageUrl: string; imagePath: string }>(
 					'https://us-central1-ionic-maps-api-1565705298126.cloudfunctions.net/storeImage',
 					uploadData, {headers: { Authorization: 'Bearer ' + token } }
 				);

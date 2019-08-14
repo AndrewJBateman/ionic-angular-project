@@ -119,8 +119,8 @@ private getGoogleMaps(): Promise<any> {
 
 ## Status & To-do list
 
-* Status: working 95%. Bookings can be made and new places added to offers page. If a different user is logged in they cannot book their own places (the booking button does not show) - which is correct.
-* To-do: correct issues: Camera image does not display. Bookable place list is the same as the 'All Places' list - bookable places should not include the logged in users' places. 'My Offers' includes everyones places. 'Your Bookings' does not work - check path.
+* Status: working. Bookings can be made and new places added to offers page. If a different user is logged in they cannot book their own places (the booking button does not show) - which is correct. Camera images now show.
+* To-do: Bookable place list is the same as the 'All Places' list - bookable places should not include the logged in users' places. 'My Offers' includes everyones places. 'Your Bookings' does not work - check path - fix error with create-booking component. Fix error with svg calender icon - appears every time but the icon is displayed.
 
 ## Inspiration
 

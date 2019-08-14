@@ -17,11 +17,11 @@ export class ImagePickerComponent implements OnInit {
 	constructor(private platform: Platform) { }
 
 	ngOnInit() {
-		console.log('Mobile', this.platform.is('mobile'));
-		console.log('Hybrid', this.platform.is('hybrid'));
-		console.log('iOS', this.platform.is('ios'));
-		console.log('Android', this.platform.is('android'));
-		console.log('Desktop', this.platform.is('desktop'));
+		// console.log('Mobile', this.platform.is('mobile'));
+		// console.log('Hybrid', this.platform.is('hybrid'));
+		// console.log('iOS', this.platform.is('ios'));
+		// console.log('Android', this.platform.is('android'));
+		// console.log('Desktop', this.platform.is('desktop'));
 
 		if ((this.platform.is('mobile') && !this.platform.is('hybrid')) ||
 			this.platform.is('desktop')
@@ -31,7 +31,7 @@ export class ImagePickerComponent implements OnInit {
 	}
 
 	onPickImage() {
-		if (!Capacitor.isPluginAvailable('Camera')	) {
+		if (!Capacitor.isPluginAvailable('Camera')) {
 			this.filePickerRef.nativeElement.click();
 			return;
 		}
@@ -41,10 +41,13 @@ export class ImagePickerComponent implements OnInit {
 				source: CameraSource.Prompt,
 				correctOrientation: true,
 				width: 200,
+				// choose a base64 string so it can be easily converted to an image file
 				resultType: CameraResultType.Base64
 			})
 			.then(image => {
-				this.selectedImage = image.base64String;
+				// added code 'data:image/jpeg;base64' to make image show in browser
+				this.selectedImage = 'data:image/jpeg;base64,' + image.base64String;
+				// emit photo as a base 64 string
 				this.imagePick.emit(image.base64String);
 			})
 			.catch(error => {
@@ -61,13 +64,12 @@ export class ImagePickerComponent implements OnInit {
 		if (!pickedFile) {
 			return;
 		}
-		const fr = new FileReader();
-		fr.onload = () => {
-			const dataUrl = fr.result.toString();
+		const fileReader = new FileReader();
+		fileReader.onload = () => {
+			const dataUrl = fileReader.result.toString();
 			this.selectedImage = dataUrl;
 			this.imagePick.emit(pickedFile);
 		};
-		fr.readAsDataURL(pickedFile);
+		fileReader.readAsDataURL(pickedFile);
 	}
-
 }

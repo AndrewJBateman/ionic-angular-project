@@ -1,5 +1,6 @@
 {
   "compileOnSave": false,
+  "skipLibCheck": true,
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
