@@ -47,6 +47,7 @@ An [observable](https://rxjs-dev.firebaseapp.com/guide/observable) is created us
 
 ![page](./img/discover-places-page.png)
 ![page](./img/offers-page.png)
+![page](./img/firebase-database.png)
 
 ## Technologies
 
@@ -99,6 +100,21 @@ private getGoogleMaps(): Promise<any> {
  }
 ```
 
+* Firebase database setup: `".indexOn": ["userId"]` added to allow ordering by userId in `booking.service.ts`
+
+```json
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+      "bookings": {
+        ".indexOn": ["userId"]
+      }
+  }
+}
+
+```
+
 ## Features
 
 * Authorization module using Angular Routing with the Angular [canLoad auth guard interface](https://angular.io/api/router/CanLoad) to prevent access to pages if user is not logged in.
@@ -120,7 +136,7 @@ private getGoogleMaps(): Promise<any> {
 ## Status & To-do list
 
 * Status: working. Bookings can be made and new places added to offers page. If a different user is logged in they cannot book their own places (the booking button does not show) - which is correct. Camera images now show.
-* To-do: Bookable place list is the same as the 'All Places' list - bookable places should not include the logged in users' places. 'My Offers' includes everyones places. 'Your Bookings' does not work - check path - fix error with create-booking component. Fix error with svg calender icon - appears every time but the icon is displayed.
+* To-do: Bookable place list is the same as the 'All Places' list - bookable places should not include the logged in users' places. 'My Offers' includes everyones places. Booking a place works but fix error with template ion-datetime and datesValid() function - "TypeError: Cannot read property 'value' of undefined".
 
 ## Inspiration
 

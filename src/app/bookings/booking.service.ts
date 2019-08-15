@@ -118,7 +118,6 @@ export class BookingService {
 					`https://ionic-maps-api-1565705298126.firebaseio.com/bookings.json?orderBy="userId"&equalTo="${fetchedUserId}"&auth=${token}`
 				);
 			}),
-
 			map(bookingData => {
 				const bookings = [];
 				for (const key in bookingData) {

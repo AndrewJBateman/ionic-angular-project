@@ -14,7 +14,7 @@ const storage = new Storage({
 });
 
 fbAdmin.initializeApp({
-  credential: fbAdmin.credential.cert(require('firebase-key-here'))
+  credential: fbAdmin.credential.cert(require(''))
 });
 
 exports.storeImage = functions.https.onRequest((req, res) => {
