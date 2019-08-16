@@ -25,6 +25,8 @@ Code taken from course.
 
 ## [RxJS operators](http://reactivex.io/documentation/observable.html)
 
+**general** all operators return observables. You have to subscribe to observables.
+
 **switchMap** for http requests that emit just one value and for long-lived streams for Firebase real-time database and authentication. They do not need to be unsubscribed as they complete after emission. **switch:** because the result observable has switched from emitting the values of the first inner observable, to emitting the values of the newly created inner (derived) observable. The previous inner observable is cancelled and the new observable is subscribed. **map:** because what is being mapped is the emitted source value, that is getting mapped to an observable using the mapping function passed to switchMap. (The alternative operator is mergeMap).
 
 **of** used with a single value for an 'emit once and complete' stream.
@@ -33,11 +35,23 @@ Code taken from course.
 
 **tap** used to perform side effects. Every data value is received from the source, an action is taken on a part of the data then the data passeed on unchanged.
 
-**map** passes each source value through a transformation function then outputs the results, e.g map(x => 10*x)
+**map** transforms things. It passes each source value through a transformation function then outputs the results, e.g map(x => 10*x).
+
+**pipe** composes operators. Creates a pipeline of small reusable operators like map and filter.
+
+**from** converts a mix of other objects and data types into Observables
+
+## Ionic Controllers Used
+
+* [Alert Controller](https://ionicframework.com/docs/api/alert) alert appears on top of app contents.
+
+* [Loading Controller](https://ionicframework.com/docs/api/loading) overlay used to display activity and block user input. Loading indicators can be created, including spinners.
 
 ## Observables
 
-An [observable](https://rxjs-dev.firebaseapp.com/guide/observable) is created using 'new Observable'. It is subscribed to using an Observer and executed to deliver next / error / complete notices to the Observer, before the execution is disposed of. Sbscribers should be wrapped in try/catch blocks.
+An [observable](https://rxjs-dev.firebaseapp.com/guide/observable) is created using 'new Observable'. It is subscribed to using an Observer and executed to deliver next / error / complete notices to the Observer, before the execution is disposed of. Subscribers should be wrapped in try/catch blocks.
+
+a [BehaviourSubject](http://reactivex.io/rxjs/manual/overview.html#behaviorsubject) is a subject that requires an initial value and emits its current value to subscribers.
 
 ## Array Operators
 
@@ -58,6 +72,7 @@ An [observable](https://rxjs-dev.firebaseapp.com/guide/observable) is created us
 * [Google Firebase](https://firebase.google.com)
 * [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial)
 * [Capacitor v1.1.1](https://capacitor.ionicframework.com/)
+* [Ionic PWA Elements](https://www.npmjs.com/package/@ionic/pwa-elements)
 
 ## Setup
 
@@ -128,8 +143,7 @@ private getGoogleMaps(): Promise<any> {
 * [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial) map-modal added to new-offer page. Clicking on 'SELECT LOCATION' will open Google Maps at a fixed location. Address of place extracted from Google Maps data and stored in Places database.
 * [Capacitor Geolocation API](https://capacitor.ionicframework.com/docs/apis/geolocation) used to provide current location.
 * [Capacitor Camera API](https://capacitor.ionicframework.com/docs/apis/camera) used to provide camera functionality.
-* [Firebase Auth API](https://firebase.google.com/docs/reference/rest/auth) used to control access to app.
-* [Cordova Local Storage](https://cordova.apache.org/docs/en/latest/cordova/storage/storage.html#localstorage) to save user user authentication token so a refresh etc. does not lose a user's settings.
+* [Fapacitor Local Storage](https://capacitor.ionicframework.com/docs/apis/storage/) API provides a key-value store for simple data. Used to save user authentication token so a refresh etc. does not lose a user's settings.
 * [Google Cloud Storage](https://www.npmjs.com/package/@google-cloud/storage) used for storage of image data.
 * Auth tokens on the backend.
 

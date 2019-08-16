@@ -6,7 +6,6 @@ import { LoadingController, AlertController } from '@ionic/angular';
 
 import { AuthService, AuthResponseData } from './auth.service';
 
-
 @Component({
 	selector: 'app-auth',
 	templateUrl: './auth.page.html',
