@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 import { BookingService } from './booking.service';
 import { Booking } from './booking.model';
 
-
 @Component({
 	selector: 'app-bookings',
 	templateUrl: './bookings.page.html',

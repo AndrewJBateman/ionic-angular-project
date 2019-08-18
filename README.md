@@ -1,7 +1,6 @@
 # Ionic Angular Project
 
-App to create an Airbnb-style app, following Udemy Tutorial: [Ionic 4 - Build iOS, Android & Web Apps with Ionic & Angular](https://www.udemy.com/ionic-2-the-practical-guide-to-building-ios-android-apps/), using the [Ionic 5 framework](https://ionicframework.com/docs).
-Code taken from course.
+App to create Airbnb-style property listings with pages to make bookings and update property details. Code taken from Udemy Tutorial: [Ionic 4 - Build iOS, Android & Web Apps with Ionic & Angular](https://www.udemy.com/ionic-2-the-practical-guide-to-building-ios-android-apps/), using the [Ionic 5 framework](https://ionicframework.com/docs).
 
 ## Table of contents
 
@@ -16,10 +15,10 @@ Code taken from course.
 
 ## General info
 
-* App to view and book places to stay. All places listed on the 'discover.page' and clicking on an item navigates to a place detail page using the place id in the browser.
-* Places are displayed under 2 list option: 'ALL PLACES' and 'BOOKABLE PLACES'. The first place is displayed using an ion-card, the remaining places are displayed using a list with a thumbnail image. There is code to prevent the user from being able to book their own places, using a userId matching function.
+* App to view and book places to stay. All places listed on the 'discover.page' and clicking on an item navigate to a place detail page using the place id in the browser.
+* Places are displayed under 2 list option: 'ALL PLACES' and 'BOOKABLE PLACES'. The first place is displayed using an ion-card, the remaining places are displayed using a list with a thumbnail image. There is code to prevent the user from being able to book their own places, using a userId matching function to show/hide the booking button.
 * Places can be booked, listed and cancelled.
-* New places can be added. The location of the new place is chosen using google maps and is displayed in the template using data-binding. A photo can be taken to add to the new Place description. If there is no camera then there is a file upload button to save a jpeg image.
+* New places can be added as 'Offers'. The location of the new place is chosen using the Google Maps API and is displayed in the template using data-binding. A photo can be taken to add to the new Place description. If there is no camera then there is a file upload button to save a jpeg image.The Firestore Function
 * Burger side panel added with links to the discover places listings, your bookings and a logout button.
 * Bottom menu with 2 links to 'Discover' (default page upon loading) and 'Offers' that lists all the places available.
 
@@ -60,7 +59,9 @@ a [BehaviourSubject](http://reactivex.io/rxjs/manual/overview.html#behaviorsubje
 ## Screenshots
 
 ![page](./img/discover-places-page.png)
-![page](./img/offers-page.png)
+![page](./img/discover-place-detail.png)
+![page](./img/new-offer.png)
+![page](./img/my-offers-page.png)
 ![page](./img/firebase-database.png)
 
 ## Technologies
@@ -150,7 +151,7 @@ private getGoogleMaps(): Promise<any> {
 ## Status & To-do list
 
 * Status: working. Bookings can be made and new places added to offers page. If a different user is logged in they cannot book their own places (the booking button does not show) - which is correct. Camera images now show.
-* To-do: Bookable place list is the same as the 'All Places' list - bookable places should not include the logged in users' places. 'My Offers' includes everyones places. Booking a place works but fix error with template ion-datetime and datesValid() function - "TypeError: Cannot read property 'value' of undefined".
+* To-do: Bookable place list is the same as the 'All Places' list - bookable places should not include the logged in users' places. 'My Offers' includes everyones places.
 
 ## Inspiration
 
