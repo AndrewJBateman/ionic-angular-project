@@ -4,14 +4,21 @@ App to create Airbnb-style property listings with pages to make bookings and upd
 
 ## Table of contents
 
-* [General info](#general-info)
-* [Screenshots](#screenshots)
-* [Technologies](#technologies)
-* [Setup](#setup)
-* [Features](#features)
-* [Status](#status)
-* [Inspiration](#inspiration)
-* [Contact](#contact)
+* [Ionic Angular Project](#ionic-angular-project)
+  * [Table of contents](#table-of-contents)
+  * [General info](#general-info)
+  * [RxJS operators](#rxjs-operators)
+  * [Ionic Controllers Used](#ionic-controllers-used)
+  * [Observables](#observables)
+  * [Array Operators](#array-operators)
+  * [Screenshots](#screenshots)
+  * [Technologies](#technologies)
+  * [Setup](#setup)
+  * [Code Examples (taken from Udemy course with my comments added)](#code-examples-taken-from-udemy-course-with-my-comments-added)
+  * [Features](#features)
+  * [Status & To-do list](#status--to-do-list)
+  * [Inspiration](#inspiration)
+  * [Contact](#contact)
 
 ## General info
 
@@ -78,6 +85,7 @@ a [BehaviourSubject](http://reactivex.io/rxjs/manual/overview.html#behaviorsubje
 ## Setup
 
 * To start the server on _localhost://8100_ type: `ionic serve`
+* npm i --save-dev @angular-devkit/schematics
 * To generate normal www build file: `ionic build`
 * Build for Android app: `ionic capacitor run android`
 
