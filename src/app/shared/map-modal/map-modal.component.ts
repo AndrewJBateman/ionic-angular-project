@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
 export class MapModalComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	// ViewChild is a property decorator that configures a view query.
-	@ViewChild('map', { static: false }) mapElementRef: ElementRef;
+	@ViewChild('map') mapElementRef: ElementRef;
 	@Input() center = { lat: 37.7964333, lng: -1.5121459 };
 	@Input() selectable = true;
 	@Input() closeButtonText = 'Cancel';
