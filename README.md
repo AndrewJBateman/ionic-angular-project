@@ -1,6 +1,6 @@
 # :zap: Ionic Angular Project
 
-App to create Airbnb-style property listings with pages to make bookings and update property details. Code taken from Udemy Tutorial: [Ionic 4 - Build iOS, Android & Web Apps with Ionic & Angular](https://www.udemy.com/ionic-2-the-practical-guide-to-building-ios-android-apps/), using the [Ionic 5 framework](https://ionicframework.com/docs).
+App to create Airbnb-style property listings with pages to make bookings and update property details. Code from Udemy Tutorial: [Ionic 4 - Build iOS, Android & Web Apps with Ionic & Angular](https://www.udemy.com/ionic-2-the-practical-guide-to-building-ios-android-apps/), using the [Ionic 5 framework](https://ionicframework.com/docs).
 
 ## :page_facing_up:   Table of contents
 
@@ -22,23 +22,23 @@ App to create Airbnb-style property listings with pages to make bookings and upd
 
 ## :books: General info
 
-* App to view and book places to stay. All places listed on the 'discover.page' and clicking on an item navigate to a place detail page using the place id in the browser.
-* Places are displayed under 2 list option: 'ALL PLACES' and 'BOOKABLE PLACES'. The first place is displayed using an ion-card, the remaining places are displayed using a list with a thumbnail image. There is code to prevent the user from being able to book their own places, using a userId matching function to show/hide the booking button.
+* App to view and book places to stay. All places are listed on the 'discover.page' and clicking on an item navigates to a place detail page using the place id in the browser.
+* Places are displayed under 2 list options: 'ALL PLACES' and 'BOOKABLE PLACES'. The first place is displayed using an ion-card, the remaining places are displayed using a list with a thumbnail image. There is code to prevent the user from being able to book their own places, using a userId matching function to show/hide the booking button.
 * Places can be booked, listed and cancelled.
-* New places can be added as 'Offers'. The location of the new place is chosen using the Google Maps API and is displayed in the template using data-binding. A photo can be taken to add to the new Place description. If there is no camera then there is a file upload button to save a jpeg image.The Firestore Function
+* New places can be added as 'Offers'. The location of the new place is chosen using the Google Maps API and is displayed in the template using data-binding. A photo can be taken to add to the new Place description. If there is no camera then there is a file upload button to save a jpeg image.
 * Burger side panel added with links to the discover places listings, your bookings and a logout button.
 * Bottom menu with 2 links to 'Discover' (default page upon loading) and 'Offers' that lists all the places available.
 
 ## [RxJS operators](http://reactivex.io/documentation/observable.html)
 
 * **general** all operators return observables. You have to subscribe to observables.
-* **switchMap** for http requests that emit just one value and for long-lived streams for Firebase real-time database and authentication. They do not need to be unsubscribed as they complete after emission. **switch:** because the result observable has switched from emitting the values of the first inner observable, to emitting the values of the newly created inner (derived) observable. The previous inner observable is cancelled and the new observable is subscribed. **map:** because what is being mapped is the emitted source value, that is getting mapped to an observable using the mapping function passed to switchMap. (The alternative operator is mergeMap).
+* **switchMap** for http requests that emit just one value and for long-lived streams for Firebase real-time database and authentication. They do not need to be unsubscribed as they complete after emission. **switch:** because the result observable has switched from emitting the values of the first inner observable to emitting the values of the newly created inner (derived) observable. The previous inner observable is cancelled and the new observable is subscribed. **map:** because what is being mapped is the emitted source value, that is getting mapped to an observable using the mapping function passed to switchMap. (The alternative operator is mergeMap).
 * **of** used with a single value for an 'emit once and complete' stream.
 * **take** emits only the first n values from an observable (e.g. take(1) emits only the first 2 values )
-* **tap** used to perform side effects. Every data value is received from the source, an action is taken on a part of the data then the data passeed on unchanged.
+* **tap** used to perform side effects. Every data value is received from the source, an action is taken on a part of the data then the data is passed on unchanged.
 * **map** transforms things. It passes each source value through a transformation function then outputs the results, e.g map(x => 10*x).
 * **pipe** composes operators. Creates a pipeline of small reusable operators like map and filter.
-* **from** converts a mix of other objects and data types into Observables
+* **from** converts a mix of other objects and data types into Observables.
 
 ## :books: Ionic Controllers Used
 
@@ -52,7 +52,7 @@ App to create Airbnb-style property listings with pages to make bookings and upd
 
 ## :books: Array Operators
 
-* [Array.push()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) adds one or more elements to the end of an array and returns the new aray length.
+* [Array.push()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) adds one or more elements to the end of an array and returns the new array length.
 
 ## :camera: Screenshots
 
@@ -145,7 +145,7 @@ private getGoogleMaps(): Promise<any> {
 * [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial) map-modal added to new-offer page. Clicking on 'SELECT LOCATION' will open Google Maps at a fixed location. Address of place extracted from Google Maps data and stored in Places database.
 * [Capacitor Geolocation API](https://capacitor.ionicframework.com/docs/apis/geolocation) used to provide current location.
 * [Capacitor Camera API](https://capacitor.ionicframework.com/docs/apis/camera) used to provide camera functionality.
-* [Fapacitor Local Storage](https://capacitor.ionicframework.com/docs/apis/storage/) API provides a key-value store for simple data. Used to save user authentication token so a refresh etc. does not lose a user's settings.
+* [Capacitor Local Storage](https://capacitor.ionicframework.com/docs/apis/storage/) API provides a key-value store for simple data. Used to save user authentication token so a refresh etc. does not lose a user's settings.
 * [Google Cloud Storage](https://www.npmjs.com/package/@google-cloud/storage) used for storage of image data.
 * Auth tokens on the backend.
 
@@ -160,4 +160,4 @@ private getGoogleMaps(): Promise<any> {
 
 ## :envelope: Contact
 
-Repo created by [ABateman](https://www.andrewbateman.org) - feel free to contact me!
+* Repo created by [ABateman](https://www.andrewbateman.org) - you are welcome to [send me a message](https://andrewbateman.org/contact)
