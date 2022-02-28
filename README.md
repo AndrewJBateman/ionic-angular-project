@@ -1,6 +1,6 @@
 # :zap: Ionic Angular Project
 
-App to create Airbnb-style property listings with pages to make bookings and update property details. Code from Udemy Tutorial: [Ionic 4 - Build iOS, Android & Web Apps with Ionic & Angular](https://www.udemy.com/ionic-2-the-practical-guide-to-building-ios-android-apps/), using the [Ionic 5 framework](https://ionicframework.com/docs).
+* App to create Airbnb-style property listings with pages to make bookings and update property details. Code from Udemy Tutorial: [Ionic 4 - Build iOS, Android & Web Apps with Ionic & Angular](https://www.udemy.com/ionic-2-the-practical-guide-to-building-ios-android-apps/), using the [Ionic 5 framework](https://ionicframework.com/docs).
 
 ## :page_facing_up:   Table of contents
 
@@ -18,6 +18,7 @@ App to create Airbnb-style property listings with pages to make bookings and upd
   * [:cool: Features](#cool-features)
   * [:clipboard: Status & To-do list](#clipboard-status--to-do-list)
   * [:clap: Inspiration](#clap-inspiration)
+  * [:file_folder: License](#file_folder-license)
   * [:envelope: Contact](#envelope-contact)
 
 ## :books: General info
@@ -64,10 +65,10 @@ App to create Airbnb-style property listings with pages to make bookings and upd
 
 ## :signal_strength: Technologies
 
-* [Ionic v5](https://ionicframework.com/)
-* [Angular v10](https://angular.io/)
-* [Ionic/angular v5](https://ionicframework.com/)
-* [RxJS v6](https://angular.io/guide/rx-library)
+* [Ionic v6](https://ionicframework.com/)
+* [Angular v13](https://angular.io/)
+* [Ionic/angular v6](https://ionicframework.com/)
+* [RxJS v7](https://angular.io/guide/rx-library)
 * [Google Firebase](https://firebase.google.com)
 * [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial)
 * [Capacitor v2](https://capacitor.ionicframework.com/)
@@ -151,7 +152,7 @@ private getGoogleMaps(): Promise<any> {
 
 ## :clipboard: Status & To-do list
 
-* Status: working. Updated to latest Ionic & Angular versions.
+* Status: Updated to latest Ionic & Angular versions. Not fully tested since updates.
 * To-do: Bookable place list is the same as the 'All Places' list - bookable places should not include the logged in users' places. 'My Offers' includes everyones places.
 
 ## :clap: Inspiration
