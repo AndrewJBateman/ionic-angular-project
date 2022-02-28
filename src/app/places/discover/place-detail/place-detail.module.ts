@@ -18,14 +18,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [
-		CommonModule,
-		FormsModule,
-		IonicModule,
-		RouterModule.forChild(routes),
-		SharedModule
-	],
-	declarations: [PlaceDetailPage, CreateBookingComponent],
-	entryComponents: [CreateBookingComponent]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        RouterModule.forChild(routes),
+        SharedModule
+    ],
+    declarations: [PlaceDetailPage, CreateBookingComponent]
 })
 export class PlaceDetailPageModule {}
